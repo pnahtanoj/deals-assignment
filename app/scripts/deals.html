@@ -1,0 +1,20 @@
+<div ng-repeat='score in $ctrl.scores' class="row col-md-8 col-md-offset-2">
+	<h1>{{score}} section</h1>
+	<table class="table table-striped">
+		<thead>
+		<tr>
+			<th>Title</th>
+			<th style='text-align: right;'>Metacritic Score</th>
+		</tr>
+		</thead>
+		<tbody>
+			<tr ng-if='$ctrl.getRange(score).length==0'>
+				<td>No Options Available</td>
+			</tr>
+			<tr ng-repeat='deal in $ctrl.getRange(score) | orderBy:"-metacriticScore"'>
+				<td>{{deal.title}}</td>
+				<td style='text-align: right;'>{{deal.metacriticScore}}</td>
+			</tr>
+		</tbody>
+	</table>
+<div>
